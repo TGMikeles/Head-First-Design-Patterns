@@ -2,14 +2,20 @@ package headfirst.designpatterns.combining.observer;
 
 import java.util.Iterator;
 import java.util.ArrayList;
-
+/*
+ *Die Klasse Flock implementiert Quackable diese Klasse gibt der Flock .
+ * Neben den Methoden add,registerObserver,notifyObservers () hat diese Klasse ein Iterator
+ * Mit dem Iterator geht sie die ArrayList mit Quackable als Genärizität .
+ *  Im Prinzip ist die Klasse sozusagen ein QuackObservable aber benimmt sich wie ein Observer
+ * @author Ibrahim Keles
+ */
 public class Flock implements Quackable {
 	ArrayList<Quackable> ducks = new ArrayList<Quackable>();
-  
+
 	public void add(Quackable duck) {
 		ducks.add(duck);
 	}
-  
+
 	public void quack() {
 		Iterator<Quackable> iterator = ducks.iterator();
 		while (iterator.hasNext()) {
@@ -17,7 +23,7 @@ public class Flock implements Quackable {
 			duck.quack();
 		}
 	}
-   
+
 	public void registerObserver(Observer observer) {
 		Iterator<Quackable> iterator = ducks.iterator();
 		while (iterator.hasNext()) {
@@ -25,9 +31,9 @@ public class Flock implements Quackable {
 			duck.registerObserver(observer);
 		}
 	}
-  
+
 	public void notifyObservers() { }
-  
+
 	public String toString() {
 		return "Flock of Ducks";
 	}
